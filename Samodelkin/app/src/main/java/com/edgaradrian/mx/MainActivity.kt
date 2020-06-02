@@ -17,6 +17,15 @@ class MainActivity : AppCompatActivity() {
         val dexterityTextView = findViewById<TextView>(R.id.dexterityTextView)
         val wisdomTextView = findViewById<TextView>(R.id.wisdomTextView)
         val strengthTextView = findViewById<TextView>(R.id.strengthTextView)
+
+        characterData.run {
+            nameTextView.text = name
+            raceTextView.text = race
+            dexterityTextView.text = dex
+            wisdomTextView.text = wis
+            strengthTextView.text = str
+        }
+
     }//onCreate
 
 }//MainActivity
