@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
+
+    private var characterData = CharacterGenerator.generate()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -14,5 +17,6 @@ class MainActivity : AppCompatActivity() {
         val dexterityTextView = findViewById<TextView>(R.id.dexterityTextView)
         val wisdomTextView = findViewById<TextView>(R.id.wisdomTextView)
         val strengthTextView = findViewById<TextView>(R.id.strengthTextView)
-    }
+    }//onCreate
+
 }//MainActivity
