@@ -2,12 +2,18 @@ package com.edgaradrian.mx
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
+
+private const val CHARACTER_DATA_KEY = "CHARACTER_DATA_KEY"
 
 class MainActivity : AppCompatActivity() {
 
     private var characterData = CharacterGenerator.generate()
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putSerializable(CHARACTER_DATA_KEY, characterData)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
