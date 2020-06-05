@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
             incrementScore()
         }
 
+        resetGame()
     }//onCreate
 
     private fun incrementScore() {
