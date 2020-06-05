@@ -36,6 +36,10 @@ class MainActivity : AppCompatActivity() {
     }//onCreate
 
     private fun incrementScore() {
+        if (!gameStarted) {
+            startGame()
+        }
+
         score++
 
         val newScore = getString(R.string.your_score, score)
