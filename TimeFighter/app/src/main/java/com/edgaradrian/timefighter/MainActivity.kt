@@ -42,6 +42,26 @@ class MainActivity : AppCompatActivity() {
     }//incrementScore
 
     private fun resetGame() {
+        score = 0
+
+        val initialScore = getString(R.string.your_score, score)
+        gameScoreTextview.text = initialScore
+
+        val initialTimeLeft = getString(R.string.time_left, 60)
+        timeLeftTextView.text = initialTimeLeft
+
+        countDownTimer = object : CountDownTimer(initialCountDown, countDownInterval) {
+            override fun onTick(millisUntilFinished: Long) {
+                timeLeft = millisUntilFinished.toInt() / 1000
+
+                val timeLeftString = getString(R.string.time_left, timeLeft)
+                timeLeftTextView.text = timeLeftString
+            }//onTick
+
+            override fun onFinish() {
+                TODO("Not yet implemented")
+            }//onFinish
+        }
 
     }//resetGame
 
