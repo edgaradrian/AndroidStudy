@@ -67,7 +67,8 @@ class MainActivity : AppCompatActivity() {
     }//resetGame
 
     private fun startGame() {
-
+        countDownTimer.start()
+        gameStarted = true
     }//startGame
 
     private fun endGame() {
