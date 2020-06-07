@@ -44,7 +44,13 @@ class MainActivity : AppCompatActivity() {
             incrementScore()
         }
 
-        resetGame()
+        if (savedInstanceState != null) {
+            score = savedInstanceState.getInt(SCORE_KEY)
+            timeLeft = savedInstanceState.getInt(TIME_LEFT_KEY)
+        } else {
+            resetGame()
+        }
+
     }//onCreate
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -108,5 +114,32 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, getString(R.string.game_over_message, score), Toast.LENGTH_LONG).show()
         resetGame()
     }//endGame
+
+    private fun restoreGame() {
+        val restoredScore = getString(R.string.your_score, score)
+        gameScoreTextview.text = restoredScore
+
+        val restoredTime = getString(R.string.time_left, timeLeft)
+        timeLeftTextView.text = restoredTime
+
+        countDownTimer = object : CountDownTimer((timeLeft * 1000).toLong(), countDownInterval) {
+
+            override fun onTick(millisUntilFinished: Long) {
+                timeLeft = millisUntilFinished.toInt() / 1000
+
+                val timeLeftString = getString(R.string.time_left, timeLeft)
+                timeLeftTextView.text = timeLeftString
+            }//onTick
+
+            override fun onFinish() {
+                endGame()
+            }//onFiniss
+
+        }
+
+        countDownTimer.start()
+        gameStarted = true
+
+    }//restoreGame
 
 }//MainActivity
