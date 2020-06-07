@@ -3,6 +3,7 @@ package com.edgaradrian.timefighter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.PersistableBundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
@@ -24,6 +25,11 @@ class MainActivity : AppCompatActivity() {
     private var countDownInterval: Long = 1000
     private var timeLeft = 60
 
+    companion object {
+        private const val SCORE_KEY = "SCORE_KEY"
+        private const val TIME_LEFT_KEY = "TIME_LEFT_KEY"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -40,6 +46,23 @@ class MainActivity : AppCompatActivity() {
 
         resetGame()
     }//onCreate
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        outState.putInt(SCORE_KEY, score)
+        outState.putInt(TIME_LEFT_KEY, timeLeft)
+        countDownTimer.cancel()
+
+        Log.d(TAG, "onSaveInstanceState: Saving Score: $score & Time Left: $timeLeft ")
+
+    }//onSaveInstanceState
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        Log.d(TAG, "onDestroy called")
+    }//onDestroy
 
     private fun incrementScore() {
         if (!gameStarted) {
