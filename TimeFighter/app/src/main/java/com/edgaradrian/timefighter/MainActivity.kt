@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.PersistableBundle
 import android.util.Log
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -41,6 +42,8 @@ class MainActivity : AppCompatActivity() {
         tapMeButton = findViewById(R.id.tap_me_button)
 
         tapMeButton.setOnClickListener {
+            val bounceAnimation = AnimationUtils.loadAnimation(this, R.anim.bounce)
+            it.startAnimation(bounceAnimation)
             incrementScore()
         }
 
