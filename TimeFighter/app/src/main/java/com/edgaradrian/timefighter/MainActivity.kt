@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.PersistableBundle
 import android.util.Log
+import android.view.Menu
 import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.TextView
@@ -72,6 +73,12 @@ class MainActivity : AppCompatActivity() {
 
         Log.d(TAG, "onDestroy called")
     }//onDestroy
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }//onCreateOptionsMenu
 
     private fun incrementScore() {
         if (!gameStarted) {
