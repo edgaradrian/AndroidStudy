@@ -12,8 +12,8 @@ class ListSelectionRecyclerViewAdapter : RecyclerView.Adapter<ListSelectionViewH
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+        return listTables.size
+    }//getItemCount
 
     override fun onBindViewHolder(holder: ListSelectionViewHolder, position: Int) {
         TODO("Not yet implemented")
