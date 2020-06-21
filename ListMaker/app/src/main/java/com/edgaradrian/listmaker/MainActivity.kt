@@ -26,11 +26,13 @@ class MainActivity : AppCompatActivity() {
             showCreateListDialog()
         }
 
-        listsRecyclerView = findViewById(R.id.lists_recyclerview)
+        val lists = listDataManager.readLists()
+        listsRecyclerView = findViewById<RecyclerView>(R.id.lists_recyclerview)
         listsRecyclerView.layoutManager = LinearLayoutManager(this)
-        listsRecyclerView.adapter = ListSelectionRecyclerViewAdapter()
 
-    }
+        listsRecyclerView.adapter = ListSelectionRecyclerViewAdapter(lists)
+
+    }//onCreate
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -61,6 +63,12 @@ class MainActivity : AppCompatActivity() {
         builder.setView(listTitleEditText)
 
         builder.setPositiveButton(positiveButtonTitle) { dialog, _ ->
+            val list = TaskList(listTitleEditText.text.toString())
+            listDataManager.saveList(list)
+
+            val recyclerAdapter = listsRecyclerView.adapter as ListSelectionRecyclerViewAdapter
+            recyclerAdapter.addList(list)
+
             dialog.dismiss()
         }
 
