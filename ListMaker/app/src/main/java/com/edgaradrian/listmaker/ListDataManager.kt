@@ -12,5 +12,20 @@ class ListDataManager(private val context: Context) {
         sharedPreferences.apply()
     }//saveList
 
+    fun readLists(): ArrayList<TaskList> {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        val sharedPreferencesContents = sharedPreferences.all
+        val taskLists = ArrayList<TaskList>()
+
+        for (taskList in sharedPreferencesContents) {
+
+            val itemsHashSet = ArrayList(taskList.value as HashSet<String>)
+            val list = TaskList(taskList.key, itemsHashSet)
+
+            taskLists.add(list)
+        }
+
+        return taskLists
+    }//readLists
 
 }//ListDataManager
