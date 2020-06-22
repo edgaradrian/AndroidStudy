@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         }//trueButton onClickListener
 
         falseButton.setOnClickListener { view: View ->
-            val false_toast = Toast.makeText(this, R.string.incorrect_toast, Toast.LENGTH_SHORT).apply {
+            Toast.makeText(this, R.string.incorrect_toast, Toast.LENGTH_SHORT).apply {
                 setGravity(Gravity.TOP, 0, 300)
                 show()
             }
