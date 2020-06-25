@@ -77,4 +77,29 @@ class MainActivity : AppCompatActivity() {
 
     }//checkAnswer
 
+    override fun onStart() {
+        super.onStart()
+        Log.d(TAG, "onStart() called")
+    }//onStart
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "onResume() called")
+    }//onResume
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG, "onPause() called")
+    }//onPause
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "onStop() called")
+    }//onStop
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "onDestroy() called")
+    }//onDestroy
+
 }//MainActivity
