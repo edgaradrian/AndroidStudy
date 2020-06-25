@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var falseButton: Button
     private lateinit var nextButton: Button
     private lateinit var questionTextView: TextView
-    private var isPressed = false
 
     private val questionBank = listOf(
         Question(R.string.question_vietnam, true),
@@ -29,6 +28,8 @@ class MainActivity : AppCompatActivity() {
     )
 
     private var currentIndex = 0
+    private var isPressed = false
+    private var correctAnswers = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,8 +51,12 @@ class MainActivity : AppCompatActivity() {
 
         nextButton.setOnClickListener {
             currentIndex = (currentIndex + 1) % questionBank.size
+            if (currentIndex == 0) {
+                Toast.makeText(this, "Correct Answers: $correctAnswers", Toast.LENGTH_SHORT).show()
+                correctAnswers = 0
+            }
             updateQuestion()
-        }
+        }//setOnClickListener
 
         updateQuestion()
 
@@ -71,6 +76,10 @@ class MainActivity : AppCompatActivity() {
                 R.string.correct_toast
             } else {
                 R.string.incorrect_toast
+            }
+
+            if (messageResId == R.string.correct_toast) {
+                correctAnswers += 1
             }
 
             Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).apply {
