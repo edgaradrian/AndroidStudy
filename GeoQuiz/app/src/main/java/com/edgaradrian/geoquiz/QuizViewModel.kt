@@ -15,5 +15,5 @@ class QuizViewModel: ViewModel() {
         super.onCleared()
         Log.d(TAG, "ViewModel instance about to be destroyed")
     }//onCleared
-    
+
 }//QuizViewModel
