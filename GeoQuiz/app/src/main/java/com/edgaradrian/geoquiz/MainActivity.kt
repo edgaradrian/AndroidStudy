@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 
 private const val TAG = "MainActivity.kt"
+private const val KEY_INDEX = "index"
 
 class MainActivity : AppCompatActivity() {
 
