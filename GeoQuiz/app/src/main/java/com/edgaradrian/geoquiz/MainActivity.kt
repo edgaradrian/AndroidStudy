@@ -50,8 +50,7 @@ class MainActivity : AppCompatActivity() {
         }//falseButton onClickListener
 
         nextButton.setOnClickListener {
-            Log.d(TAG, "updating question text", Exception())
-            //quizViewModel.moveToNext()
+            quizViewModel.moveToNext()
             updateQuestion()
         }
 
