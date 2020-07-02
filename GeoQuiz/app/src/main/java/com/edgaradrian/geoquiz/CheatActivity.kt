@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 
 private const val EXTRA_ANSWER_IS_TRUE = "com.edgaradrian.android.geoquiz.answer_is_true"
-private const val EXTRA_ANSWER_SHOWN = "com.edgaradrian.android.geoquiz.answer_shown"
+const val EXTRA_ANSWER_SHOWN = "com.edgaradrian.android.geoquiz.answer_shown"
 
 class CheatActivity : AppCompatActivity() {
 

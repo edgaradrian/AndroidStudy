@@ -1,5 +1,6 @@
 package com.edgaradrian.geoquiz
 
+import android.app.Activity
 import android.content.Intent
 import android.nfc.Tag
 import androidx.appcompat.app.AppCompatActivity
@@ -68,6 +69,19 @@ class MainActivity : AppCompatActivity() {
         updateQuestion()
 
     }//onCreate
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode != Activity.RESULT_OK) {
+            return
+        }
+
+        if (requestCode == REQUEST_CODE_CHEAT) {
+            quizViewModel.isCheater = data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
+        }
+
+    }//onActivityResult
 
     private fun updateQuestion() {
         val questionTextResId = quizViewModel.currentQuestionText
