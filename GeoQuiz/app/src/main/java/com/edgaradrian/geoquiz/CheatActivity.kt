@@ -9,9 +9,13 @@ private const val EXTRA_ANSWER_IS_TRUE = "com.edgaradrian.android.geoquiz.answer
 
 class CheatActivity : AppCompatActivity() {
 
+    private var answerIsTrue = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cheat)
+
+        answerIsTrue = intent.getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false)
     }//onCreate
 
     companion object {
