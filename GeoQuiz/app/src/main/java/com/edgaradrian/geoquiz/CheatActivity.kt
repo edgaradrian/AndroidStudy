@@ -1,5 +1,6 @@
 package com.edgaradrian.geoquiz
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 
 private const val EXTRA_ANSWER_IS_TRUE = "com.edgaradrian.android.geoquiz.answer_is_true"
+private const val EXTRA_ANSWER_SHOWN = "com.edgaradrian.android.geoquiz.answer_shown"
 
 class CheatActivity : AppCompatActivity() {
 
@@ -29,9 +31,17 @@ class CheatActivity : AppCompatActivity() {
                 else -> R.string.false_button
             }
             answerTextView.setText(answerText)
+            setAnswerShownResult(true)
         }
 
     }//onCreate
+
+    private fun setAnswerShownResult(isAnswerShown: Boolean) {
+        val data = Intent().apply {
+            putExtra(EXTRA_ANSWER_SHOWN, isAnswerShown)
+        }
+        setResult(Activity.RESULT_OK, data)
+    }
 
     companion object {
         fun newIntent(packageContext: Context, answerIsTrue: Boolean): Intent {
