@@ -91,12 +91,6 @@ class MainActivity : AppCompatActivity() {
     private fun checkAnswer(userAnswer: Boolean) {
         val correctAnswer = quizViewModel.currentQuestionAnswer
 
-        /*val messageResId = if (userAnswer == correctAnswer) {
-            R.string.correct_toast
-        } else {
-            R.string.incorrect_toast
-        }
-        */
         val messageResId = when {
             quizViewModel.isCheater -> R.string.judgment_toast
             userAnswer == correctAnswer -> R.string.correct_toast
