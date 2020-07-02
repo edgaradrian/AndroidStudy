@@ -1,5 +1,6 @@
 package com.edgaradrian.geoquiz
 
+import android.content.Intent
 import android.nfc.Tag
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -57,8 +58,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         cheatButton.setOnClickListener {
-            
-        }
+            val intent = Intent(this, CheatActivity::class.java)
+            startActivity(intent)
+        }//cheatButton
 
         updateQuestion()
 
