@@ -60,12 +60,12 @@ class MainActivity : AppCompatActivity() {
             updateQuestion()
         }
 
-        cheatButton.setOnClickListener {
+        cheatButton.setOnClickListener { view: View ->
             val answerIsTrue = quizViewModel.currentQuestionAnswer
             val intent = CheatActivity.newIntent(this@MainActivity, answerIsTrue)
             val options = ActivityOptions.makeClipRevealAnimation(view, 0,0, view.width, view.height)
             //startActivity(intent)
-            startActivityForResult(intent, REQUEST_CODE_CHEAT)
+            startActivityForResult(intent, REQUEST_CODE_CHEAT, options.toBundle())
         }//cheatButton
 
         updateQuestion()
