@@ -1,6 +1,7 @@
 package com.edgaradrian.geoquiz
 
 import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -60,10 +61,11 @@ class MainActivity : AppCompatActivity() {
             updateQuestion()
         }
 
-        cheatButton.setOnClickListener {
+        cheatButton.setOnClickListener { view: View ->
             val answerIsTrue = quizViewModel.currentQuestionAnswer
             val intent = CheatActivity.newIntent(this@MainActivity, answerIsTrue)
             //startActivity(intent)
+
             startActivityForResult(intent, REQUEST_CODE_CHEAT)
         }//cheatButton
 

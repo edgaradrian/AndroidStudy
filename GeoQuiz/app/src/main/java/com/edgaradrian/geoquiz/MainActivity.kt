@@ -1,6 +1,7 @@
 package com.edgaradrian.geoquiz
 
 import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Intent
 import android.nfc.Tag
 import androidx.appcompat.app.AppCompatActivity
@@ -62,6 +63,7 @@ class MainActivity : AppCompatActivity() {
         cheatButton.setOnClickListener {
             val answerIsTrue = quizViewModel.currentQuestionAnswer
             val intent = CheatActivity.newIntent(this@MainActivity, answerIsTrue)
+            val options = ActivityOptions.makeClipRevealAnimation(view, 0,0, view.width, view.height)
             //startActivity(intent)
             startActivityForResult(intent, REQUEST_CODE_CHEAT)
         }//cheatButton
