@@ -3,6 +3,7 @@ package com.edgaradrian.geoquiz
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -15,6 +16,7 @@ class CheatActivity : AppCompatActivity() {
 
     private lateinit var answerTextView: TextView
     private lateinit var showAnswerButton: Button
+    private lateinit var androidVersionTextView: TextView
 
     private var answerIsTrue = false
 
@@ -25,6 +27,11 @@ class CheatActivity : AppCompatActivity() {
         answerIsTrue = intent.getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false)
         answerTextView = findViewById(R.id.answer_text_view)
         showAnswerButton = findViewById(R.id.show_answer_button)
+        androidVersionTextView = findViewById(R.id.android_version_text_view)
+
+        val apiLevel = Build.VERSION.SDK_INT
+        androidVersionTextView.text = "API Level $apiLevel"
+
         showAnswerButton.setOnClickListener {
             val answerText = when {
                 answerIsTrue -> R.string.true_button
