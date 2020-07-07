@@ -13,6 +13,7 @@ import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
@@ -20,7 +21,9 @@ import androidx.lifecycle.ViewModelProviders
 
 private const val TAG = "MainActivity.kt"
 private const val KEY_INDEX = "index"
+private const val KEY_CHEATS = "cheats"
 private const val REQUEST_CODE_CHEAT = 0
+private const val MAX_CHEATS = 3
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,6 +32,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var nextButton: Button
     private lateinit var questionTextView: TextView
     private lateinit var cheatButton: Button
+    private lateinit var cheatLinearLayout: LinearLayout
+    private lateinit var cheatTokenTextView: TextView
 
     private val quizViewModel: QuizViewModel by lazy {
         ViewModelProviders.of(this).get(QuizViewModel::class.java)
@@ -42,6 +47,9 @@ class MainActivity : AppCompatActivity() {
         val currentIndex = savedInstanceState?.getInt(KEY_INDEX, 0) ?: 0
         quizViewModel.currentIndex = currentIndex
 
+        val cheats = savedInstanceState?.getInt(KEY_CHEATS, 0) ?: 0
+        quizViewModel.cheats = cheats
+
         Log.d(TAG, "onCreate(Bundle?) called")
 
         trueButton = findViewById(R.id.true_button)
@@ -49,6 +57,8 @@ class MainActivity : AppCompatActivity() {
         nextButton = findViewById(R.id.next_button)
         cheatButton = findViewById(R.id.cheat_button)
         questionTextView = findViewById(R.id.question_text_view)
+        cheatLinearLayout = findViewById(R.id.cheat_linear_layout)
+        cheatTokenTextView = findViewById(R.id.cheat_token_text_view)
 
         trueButton.setOnClickListener { view: View ->
             checkAnswer(true)
@@ -64,6 +74,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         cheatButton.setOnClickListener { view: View ->
+
+            quizViewModel.increaseCheats()
+
             val answerIsTrue = quizViewModel.currentQuestionAnswer
             val intent = CheatActivity.newIntent(this@MainActivity, answerIsTrue)
 
@@ -74,6 +87,7 @@ class MainActivity : AppCompatActivity() {
                 startActivityForResult(intent, REQUEST_CODE_CHEAT)
             }
             //startActivity(intent)
+
 
         }//cheatButton
 
@@ -115,6 +129,15 @@ class MainActivity : AppCompatActivity() {
 
     }//checkAnswer
 
+    private fun hideCheatButton() {
+        val tokens = MAX_CHEATS - quizViewModel.cheats
+        cheatTokenTextView.text = getString(R.string.cheat_token_text_view, tokens)
+        if (quizViewModel.cheats >= MAX_CHEATS) {
+            cheatLinearLayout.isEnabled = false
+            cheatLinearLayout.visibility = View.INVISIBLE
+        }
+    }//hideCheatButton
+
     override fun onStart() {
         super.onStart()
         Log.d(TAG, "onStart() called")
@@ -122,6 +145,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        hideCheatButton()
         Log.d(TAG, "onResume() called")
     }//onResume
 
@@ -134,6 +158,7 @@ class MainActivity : AppCompatActivity() {
         super.onSaveInstanceState(outState)
         Log.i(TAG, "onSaveInstanceState")
         outState.putInt(KEY_INDEX, quizViewModel.currentIndex)
+        outState.putInt(KEY_CHEATS, quizViewModel.cheats)
     }//onSaveInstanceState
 
     override fun onStop() {
