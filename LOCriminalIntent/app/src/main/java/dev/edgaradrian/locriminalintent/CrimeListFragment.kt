@@ -4,13 +4,14 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 
 private const val TAG = "CrimeListFragment"
 
 class CrimeListFragment: Fragment() {
 
     private val crimeListViewModel: CrimeListViewModel by lazy {
-        ViewModelProvider(this).get(crimeListViewModel::class.java)
+        ViewModelProviders.of(this).get(CrimeListViewModel::class.java)
     }//crimeListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
