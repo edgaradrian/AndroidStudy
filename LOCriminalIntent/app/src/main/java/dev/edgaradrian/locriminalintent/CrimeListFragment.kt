@@ -43,4 +43,8 @@ class CrimeListFragment: Fragment() {
         }//newInstance
     }
 
+    private inner class CrimeHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+    }//CrimeHolder
+
 }//CrimeListFragment
