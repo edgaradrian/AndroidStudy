@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 private const val TAG = "CrimeListFragment"
 private const val VIEW_TYPE_NORMAL = 0
-private const val VIEW_TYPE_SPECIAL = 0
+private const val VIEW_TYPE_SPECIAL = 1
 
 class CrimeListFragment: Fragment() {
 
