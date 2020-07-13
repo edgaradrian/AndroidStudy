@@ -1,6 +1,7 @@
 package dev.edgaradrian.homeworkrecyclerview
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -67,19 +68,36 @@ class AndyListFragment: Fragment() {
             this.andy = andy
             nameTextView.text = this.andy.name
             jobTextView.text = this.andy.job
-            val imageResourceId = when (this.andy.type) {
+            val imageResourceId = getAndyImage(this.andy.type)
+            andyImageView.setImageResource(imageResourceId)
+        }
+
+        override fun onClick(v: View?) {
+            //Toast.makeText(context, "${andy.name} pressed!", Toast.LENGTH_LONG).show()
+            val container = itemView.findViewById<ViewGroup>(R.id.custom_toast_container)
+            val layout = layoutInflater.inflate(R.layout.custom_toast, container)
+            val text = layout.findViewById<TextView>(R.id.text_custom_toast)
+            text.text = andy.name
+            val image = layout.findViewById<ImageView>(R.id.image_custom_toast)
+            val andyImage = getAndyImage(andy.type)
+            image.setImageResource(andyImage)
+            with ( Toast(context) ) {
+                setGravity(Gravity.CENTER_VERTICAL, 0, 0)
+                duration = Toast.LENGTH_SHORT
+                view = layout
+                show()
+            }
+        }//onClick
+
+        private fun getAndyImage(type: AndyType): Int {
+            return when (type) {
                 AndyType.YELLOW -> R.drawable.ic_yellow_green
                 AndyType.ORANGE -> R.drawable.ic_orange_blue
                 AndyType.GREEN -> R.drawable.ic_green_yellow
                 AndyType.BLUE -> R.drawable.ic_blue_orange
                 else -> R.drawable.ic_black_white
             }
-            andyImageView.setImageResource(imageResourceId)
-        }
-
-        override fun onClick(v: View?) {
-            Toast.makeText(context, "${andy.name} pressed!", Toast.LENGTH_LONG).show()
-        }
+        }//getAndyImage
 
     }//AndyHolder
 
