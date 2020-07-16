@@ -35,7 +35,7 @@ class CrimeListFragment: Fragment() {
         crimeRecyclerView.layoutManager = LinearLayoutManager(context)
 
         return view
-    }
+    }//OnCreateView
 
     private fun updateUI(crimes: List<Crime>) {
         adapter = CrimeAdapter(crimes)
