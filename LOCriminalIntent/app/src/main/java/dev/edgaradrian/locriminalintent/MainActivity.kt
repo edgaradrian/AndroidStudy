@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity(), CrimeListFragment.Callbacks {
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
             .commit()
     }//onCrimeSelected
 
