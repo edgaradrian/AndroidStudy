@@ -109,8 +109,8 @@ class CrimeListFragment: Fragment() {
         }
 
         override fun onClick(v: View) {
-            Toast.makeText(context, "${crime.title} pressed!", Toast.LENGTH_SHORT).show()
-        }
+            callbacks?.onCrimeSelected(crime.id)
+        }//onClick
 
     }//CrimeHolder
 
