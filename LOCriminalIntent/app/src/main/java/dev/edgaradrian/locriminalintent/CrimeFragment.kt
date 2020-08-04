@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import java.util.*
 
 private const val TAG = "CrimeFragment"
@@ -23,12 +24,15 @@ class CrimeFragment: Fragment() {
     private lateinit var dateButton: Button
     private lateinit var solvedCheckBox: CheckBox
 
+    private val crimeDetailViewModel: CrimeDetailViewModel by lazy {
+        ViewModelProviders.of(this).get(CrimeDetailViewModel::class.java)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         crime = Crime()
         val crimeId: UUID = arguments?.getSerializable(ARG_CRIME_ID) as UUID
-        Log.d(TAG, "args bundle crime ID: $crimeId")
-
+        crimeDetailViewModel.loadCrime(crimeId)
     }//onCreate
 
     override fun onCreateView(
