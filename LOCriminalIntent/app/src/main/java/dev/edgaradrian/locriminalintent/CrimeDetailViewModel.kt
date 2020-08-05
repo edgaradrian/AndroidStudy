@@ -20,7 +20,7 @@ class CrimeDetailViewModel: ViewModel() {
     }//loadCrime
 
     fun saveCrime(crime: Crime) {
-        crimeRepository.updateCrime()
+        crimeRepository.updateCrime(crime)
     }//saveCrime
 
 }//CrimeDetailViewModel
