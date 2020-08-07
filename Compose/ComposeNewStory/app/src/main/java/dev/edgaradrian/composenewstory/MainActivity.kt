@@ -3,13 +3,15 @@ package dev.edgaradrian.composenewstory
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
+import androidx.ui.core.ContentScale
 import androidx.ui.core.Modifier
 import androidx.ui.core.setContent
+import androidx.ui.foundation.Image
 import androidx.ui.foundation.Text
-import androidx.ui.layout.Column
-import androidx.ui.layout.padding
+import androidx.ui.layout.*
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.Surface
+import androidx.ui.res.imageResource
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import dev.edgaradrian.composenewstory.ui.ComposeNewStoryTheme
@@ -25,9 +27,16 @@ class MainActivity : AppCompatActivity() {
 
 @Composable
 fun NewsStory() {
+
+    val image = imageResource(id = R.drawable.pantitlan)
+
     Column (
         modifier = Modifier.padding(16.dp)
     ){
+        val imageModifier = Modifier
+            .preferredHeightIn(maxHeight = 180.dp)
+        Image(image, modifier = imageModifier, contentScale = ContentScale.Crop)
+
         Text("A day in Pantitlán")
         Text("México, Distrito Federal")
         Text("Agosto 2020")
