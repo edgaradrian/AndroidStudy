@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
 import androidx.ui.core.ContentScale
 import androidx.ui.core.Modifier
+import androidx.ui.core.clip
 import androidx.ui.core.setContent
 import androidx.ui.foundation.Image
 import androidx.ui.foundation.Text
+import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.layout.*
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.Surface
@@ -35,6 +37,7 @@ fun NewsStory() {
     ){
         val imageModifier = Modifier
             .preferredHeightIn(maxHeight = 180.dp)
+                .clip(shape = RoundedCornerShape(16.dp))
         Image(image, modifier = imageModifier, contentScale = ContentScale.Crop)
 
         Text("A day in Pantitlán")
