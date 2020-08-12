@@ -32,18 +32,21 @@ fun NewsStory() {
 
     val image = imageResource(id = R.drawable.pantitlan)
 
-    Column (
-        modifier = Modifier.padding(16.dp)
-    ){
-        val imageModifier = Modifier
-            .preferredHeightIn(maxHeight = 180.dp)
-                .clip(shape = RoundedCornerShape(16.dp))
-        Image(image, modifier = imageModifier, contentScale = ContentScale.Crop)
+    MaterialTheme {
+        Column (
+                modifier = Modifier.padding(16.dp)
+        ){
+            val imageModifier = Modifier
+                    .preferredHeightIn(maxHeight = 180.dp)
+                    .clip(shape = RoundedCornerShape(16.dp))
+            Image(image, modifier = imageModifier, contentScale = ContentScale.Crop)
 
-        Text("A day in Pantitlán")
-        Text("México, Distrito Federal")
-        Text("Agosto 2020")
+            Text("A day in Pantitlán")
+            Text("México, Distrito Federal")
+            Text("Agosto 2020")
+        }
     }
+
 }//NewsStory
 
 @Preview(showBackground = true)
