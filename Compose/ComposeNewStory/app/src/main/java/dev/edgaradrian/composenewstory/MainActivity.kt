@@ -33,6 +33,7 @@ fun NewsStory() {
     val image = imageResource(id = R.drawable.pantitlan)
 
     MaterialTheme {
+        val typography = MaterialTheme.typography
         Column (
                 modifier = Modifier.padding(16.dp)
         ){
@@ -41,9 +42,9 @@ fun NewsStory() {
                     .clip(shape = RoundedCornerShape(16.dp))
             Image(image, modifier = imageModifier, contentScale = ContentScale.Crop)
 
-            Text("A day in Pantitlán")
-            Text("México, Distrito Federal")
-            Text("Agosto 2020")
+            Text("A day in Pantitlán (entre banderas)", style = typography.h5)
+            Text("México, Distrito Federal", style = typography.body1)
+            Text("Agosto 2020", style = typography.body2)
         }
     }
 
