@@ -1,5 +1,6 @@
 package com.edgaradrian.criminalintent
 
+import android.app.ProgressDialog.show
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -90,7 +91,7 @@ class CrimeFragment: Fragment() {
 
 
         dateButton.setOnClickListener {
-            DatePickerFragment().apply {
+            DatePickerFragment.newInstance(crime.date).apply {
                 show(this@CrimeFragment.parentFragmentManager, DIALOG_DATE)
             }
         }
