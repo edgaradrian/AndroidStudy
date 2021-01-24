@@ -34,7 +34,12 @@ class CrimeListFragment: Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         callbacks = context as Callbacks?
-    }
+    }//onAttach
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }//onCreate
 
     override fun onCreateView(
         inflater: LayoutInflater,
