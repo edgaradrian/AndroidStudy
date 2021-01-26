@@ -149,6 +149,9 @@ class CrimeFragment: Fragment(), DatePickerFragment.Callbacks {
             isChecked = crime.isSolved
             jumpDrawablesToCurrentState()
         }
+        if (crime.suspect.isNotEmpty()) {
+            suspectButton.text = crime.suspect
+        }
     }//updateUI
 
     private fun getCrimeReport(): String {
