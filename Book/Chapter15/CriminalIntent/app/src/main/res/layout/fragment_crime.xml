@@ -33,7 +33,11 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
     <TextView
         style="?android:listSeparatorTextViewStyle"
@@ -46,6 +50,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/crime_title_hint" />
+
+    </LinearLayout>
+
+    </LinearLayout>
 
     <TextView
         style="?android:listSeparatorTextViewStyle"
@@ -76,5 +84,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/crime_report_text" />
+
 
 </LinearLayout>
