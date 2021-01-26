@@ -130,8 +130,7 @@ class CrimeFragment: Fragment(), DatePickerFragment.Callbacks {
             setOnClickListener {
                 startActivityForResult(pickContactIntent, REQUEST_CONTACT)
             }
-
-            pickContactIntent.addCategory(Intent.CATEGORY_HOME)
+            
             val packageManager: PackageManager = requireActivity().packageManager
             val resolvedActivity: ResolveInfo? = packageManager.resolveActivity(pickContactIntent, PackageManager.MATCH_DEFAULT_ONLY)
 
