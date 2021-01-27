@@ -197,6 +197,7 @@ class CrimeFragment: Fragment(), DatePickerFragment.Callbacks {
         if (crime.suspect.isNotEmpty()) {
             suspectButton.text = crime.suspect
         }
+        updatePhotoView()
     }//updateUI
 
     private fun updatePhotoView() {
@@ -232,6 +233,11 @@ class CrimeFragment: Fragment(), DatePickerFragment.Callbacks {
                     suspectButton.text = suspect
                 }
             }
+
+            requestCode == REQUEST_PHOTO -> {
+                updatePhotoView()
+            }
+
         }
     }//onActivityResult
 
