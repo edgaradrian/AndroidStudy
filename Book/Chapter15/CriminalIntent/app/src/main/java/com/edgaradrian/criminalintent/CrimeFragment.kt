@@ -180,7 +180,12 @@ class CrimeFragment: Fragment(), DatePickerFragment.Callbacks {
     override fun onStop() {
         super.onStop()
         crimeDetailViewModel.saveCrime(crime)
-    }
+    }//onStop
+
+    override fun onDetach() {
+        super.onDetach()
+        requireActivity().revokeUriPermission(photoUri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+    }//onDetach
 
     override fun onDateSelected(date: Date) {
         crime.date = date
@@ -235,6 +240,7 @@ class CrimeFragment: Fragment(), DatePickerFragment.Callbacks {
             }
 
             requestCode == REQUEST_PHOTO -> {
+                requireActivity().revokeUriPermission(photoUri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
                 updatePhotoView()
             }
 
