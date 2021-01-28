@@ -1,2 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">Intento Criminal</string>
+    <string name="crime_title_hint">Introduzcaun título</string>
+    <string name="crime_title_label">Título</string>
+    <string name="crime_details_label">Detalles</string>
+    <string name="crime_solved_label">Solucionado</string>
+    <string name="new_crime">Crimen Nuevo</string>
+    <string name="crime_suspect_text">Elegir Sospechoso</string>
+    <string name="crime_report_text">Enviar el Informe del Crimen</string>
+    <string name="crime_report">%1$s! El crimen fue descubierto el %2$s. %3$s, y %4$s</string>
+    <string name="crime_report_solved">El caso está resuelto</string>
+    <string name="crime_report_unsolved">El caso no está resuelto</string>
+    <string name="crime_report_no_suspect">No hay sospechoso.</string>
+    <string name="crime_report_suspect">el/la sospechoso/s es %s.</string>
+    <string name="crime_report_subject">Intento Criminal Informe del Crimen</string>
+    <string name="send_report">Enviar el informe a través de</string>
+</resources>
