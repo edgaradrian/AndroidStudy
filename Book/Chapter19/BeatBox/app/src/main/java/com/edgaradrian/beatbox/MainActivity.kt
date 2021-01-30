@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.recyclerView.apply {
             layoutManager = GridLayoutManager(context, 3)
+            adapter = SoundAdapter()
         }
     }//onCreate
 
@@ -38,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onBindViewHolder(holder: SoundHolder, position: Int) {
-            
+
         }
 
         override fun getItemCount() = 0
