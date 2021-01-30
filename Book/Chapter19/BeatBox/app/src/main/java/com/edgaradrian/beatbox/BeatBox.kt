@@ -1,7 +1,9 @@
 package com.edgaradrian.beatbox
 
+import android.content.res.AssetManager
+
 private const val TAG = "BeatBox"
 private const val SOUNDS_FOLDER = "sample_sounds"
 
-class BeatBox {
+class BeatBox(private val assets: AssetManager) {
 }//BeatBox
