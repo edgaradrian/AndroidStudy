@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.recyclerView.apply {
             layoutManager = GridLayoutManager(context, 3)
-            adapter = SoundAdapter()
+            adapter = SoundAdapter(beatBox.sounds)
         }
     }//onCreate
 
