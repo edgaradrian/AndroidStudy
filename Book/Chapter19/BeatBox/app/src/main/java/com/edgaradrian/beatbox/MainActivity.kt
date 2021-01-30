@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.edgaradrian.beatbox.databinding.ActivityMainBinding
+import com.edgaradrian.beatbox.databinding.ListItemSoundBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,6 +19,10 @@ class MainActivity : AppCompatActivity() {
         }
     }//onCreate
 
+
+    private inner class SoundHolder(private val binding: ListItemSoundBinding): RecyclerView.ViewHolder(binding.root) {
+
+    }//SoundHolder
 
 
 }//MainActivity
