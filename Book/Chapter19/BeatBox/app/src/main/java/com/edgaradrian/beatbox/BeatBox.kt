@@ -4,6 +4,8 @@ import android.content.res.AssetFileDescriptor
 import android.content.res.AssetManager
 import android.media.SoundPool
 import android.util.Log
+import com.google.android.material.resources.TextAppearanceFontCallback
+import java.io.IOException
 
 private const val TAG = "BeatBox"
 private const val SOUNDS_FOLDER = "sample_sounds"
@@ -35,7 +37,15 @@ class BeatBox(private val assets: AssetManager) {
         soundNames.forEach { filename ->
             val assetPath = "$SOUNDS_FOLDER/$filename"
             val sound = Sound(assetPath)
-            sounds.add(sound)
+
+            try {
+                load(sound)
+                sounds.add(sound)
+            } catch (ioe: IOException) {
+                Log.e(TAG, "Could not load sound $filename", ioe)
+            }
+
+
         }
 
         return sounds
