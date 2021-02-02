@@ -28,6 +28,10 @@ class BeatBox(private val assets: AssetManager) {
         }
     }//play
 
+    fun release() {
+        soundPool.release()
+    }//release
+
     private fun loadSounds(): List<Sound> {
 
         val soundNames: Array<String>
