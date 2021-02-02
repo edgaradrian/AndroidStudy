@@ -23,5 +23,9 @@ class SoundViewModelTest {
        assertThat(subject.title, `is`(sound.name))
    }//exposesSoundNameAsTitle
 
+   @Test
+   fun callsBeatBoxPlayOnButtonClicked() {
+       subject.onButtonClicked()
+   }//callsBeatBoxPlayOnButtonClicked
 
 }
