@@ -1,8 +1,10 @@
 package com.edgaradrian.beatbox
 
+import org.hamcrest.core.Is.`is`
 import org.junit.Before
 
 import org.junit.Assert.*
+import org.junit.Test
 
 class SoundViewModelTest {
 
@@ -15,4 +17,11 @@ class SoundViewModelTest {
         subject = SoundViewModel()
         subject.sound= sound
     }//setUp
+
+   @Test
+   fun exposesSoundNameAsTitle() {
+       assertThat(subject.title, `is`(sound.name))
+   }//exposesSoundNameAsTitle
+
+
 }
