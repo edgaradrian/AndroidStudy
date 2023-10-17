@@ -35,6 +35,12 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, R.string.incorrect_toast, Toast.LENGTH_SHORT).show()
         }
 
+        binding.nextButton.setOnClickListener { view: View ->
+            currentIndex = (currentIndex + 1) % questionBank.size
+            val questionTextResId = questionBank[currentIndex].textResId
+            binding.questionTextView.setText(questionTextResId)
+        }
+
         val questionTextResId = questionBank[currentIndex].textResId
         binding.questionTextView.setText(questionTextResId)
 
