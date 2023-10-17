@@ -11,9 +11,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private lateinit var trueButton: Button
-    private lateinit var falseButton: Button
-
     private val questionBank = listOf(
         Question(R.string.question_africa, false),
         Question(R.string.question_americas, true),
@@ -30,14 +27,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        trueButton = findViewById(R.id.true_button)
-        falseButton = findViewById(R.id.false_button)
-
-        trueButton.setOnClickListener { view: View ->
+        binding.trueButton.setOnClickListener { view: View ->
             Toast.makeText(this, R.string.correct_toast, Toast.LENGTH_SHORT).show()
         }
 
-        falseButton.setOnClickListener { view: View ->
+        binding.falseButton.setOnClickListener { view: View ->
             Toast.makeText(this, R.string.incorrect_toast, Toast.LENGTH_SHORT).show()
         }
 
