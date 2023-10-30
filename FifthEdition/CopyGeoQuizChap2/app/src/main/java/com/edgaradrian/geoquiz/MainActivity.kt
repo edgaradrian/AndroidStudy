@@ -35,6 +35,15 @@ class MainActivity : AppCompatActivity() {
             checkAnswer(false)
         }
 
+        binding.backButton.setOnClickListener { view: View ->
+            if (currentIndex > 0) {
+                currentIndex = (currentIndex - 1) % questionBank.size
+            } else {
+                currentIndex = questionBank.size - 1
+            }
+            updateQuestion()
+        }
+
         binding.nextButton.setOnClickListener { view: View ->
             currentIndex = (currentIndex + 1) % questionBank.size
             updateQuestion()
