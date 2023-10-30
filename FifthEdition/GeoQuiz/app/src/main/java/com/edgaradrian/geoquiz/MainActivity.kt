@@ -49,4 +49,15 @@ class MainActivity : AppCompatActivity() {
         binding.questionTextView.setText(questionTextResId)
     }//updateQuestion
 
+    private fun checkAnswer(userAnswer: Boolean) {
+        val correctAnswer = questionBank[currentIndex].answer
+        val messageResId = if (userAnswer == correctAnswer) {
+            R.string.correct_toast
+        } else {
+            R.string.incorrect_toast
+        }
+
+        Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show()
+    }//checkAnswer
+
 }
