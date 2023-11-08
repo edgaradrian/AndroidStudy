@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.Toast
 import com.edgaradrian.geoquiz.databinding.ActivityMainBinding
 
+private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
