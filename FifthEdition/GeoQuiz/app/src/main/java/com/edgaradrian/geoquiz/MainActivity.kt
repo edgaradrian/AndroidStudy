@@ -47,6 +47,31 @@ class MainActivity : AppCompatActivity() {
 
     }//onCreate
 
+    override fun onStart() {
+        super.onStart()
+        Log.d(TAG, "onStart() called")
+    }//onStart
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "onResume() called")
+    }//onResume
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG, "onPause()")
+    }//onPause
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "onStop()")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "onDestroy()")
+    }//onDestroy
+
     private fun updateQuestion(){
         val questionTextResId = questionBank[currentIndex].textResId
         binding.questionTextView.setText(questionTextResId)
