@@ -29,10 +29,12 @@ class MainActivity : AppCompatActivity() {
 
         binding.trueButton.setOnClickListener { view: View ->
             checkAnswer(true)
+            deactiveButtons()
         }
 
         binding.falseButton.setOnClickListener { view: View ->
             checkAnswer(false)
+            deactiveButtons()
         }
 
         binding.backButton.setOnClickListener { view: View ->
@@ -47,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         binding.nextButton.setOnClickListener { view: View ->
             currentIndex = (currentIndex + 1) % questionBank.size
             updateQuestion()
+            activateButtons()
         }
 
         binding.questionTextView.setOnClickListener { view: View ->
@@ -73,5 +76,15 @@ class MainActivity : AppCompatActivity() {
 
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show()
     }//checkAnswer
+
+    private fun activateButtons() {
+        binding.trueButton.isEnabled = true
+        binding.falseButton.isEnabled = true
+    }//activateButtons
+
+    private fun deactiveButtons() {
+        binding.trueButton.isEnabled = false
+        binding.falseButton.isEnabled = false
+    }
 
 }
