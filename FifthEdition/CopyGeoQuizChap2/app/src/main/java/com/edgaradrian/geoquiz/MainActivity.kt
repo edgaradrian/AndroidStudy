@@ -21,11 +21,14 @@ class MainActivity : AppCompatActivity() {
     )
 
     private var currentIndex = 0
+    private var grade = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.backButton.isEnabled = false
 
         binding.trueButton.setOnClickListener { view: View ->
             checkAnswer(true)
@@ -47,9 +50,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.nextButton.setOnClickListener { view: View ->
-            currentIndex = (currentIndex + 1) % questionBank.size
-            updateQuestion()
-            activateButtons()
+            if (currentIndex < 4) {
+                currentIndex = (currentIndex + 1) % questionBank.size
+                updateQuestion()
+                activateButtons()
+            } else {
+                binding.nextButton.isEnabled = false
+                Toast.makeText(this, "Your grade $grade", Toast.LENGTH_SHORT).show()
+            }
         }
 
         binding.questionTextView.setOnClickListener { view: View ->
@@ -68,10 +76,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkAnswer(userAnswer: Boolean) {
         val correctAnswer = questionBank[currentIndex].answer
-        val messageResId = if (userAnswer == correctAnswer) {
-            R.string.correct_toast
+        var messageResId: Int
+
+        if (userAnswer == correctAnswer) {
+            messageResId = R.string.correct_toast
+            grade += 20
         } else {
-            R.string.incorrect_toast
+            messageResId = R.string.incorrect_toast
         }
 
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show()
